@@ -94,10 +94,10 @@ void getProbeTime(ProbeTime probeTime[], PortStatus portStatus[])
  *          |
  * 
  * 传感器阵列采用正方形，传感器的位置坐标为
- *(L, L), (-L，L), (-L,-L), (L,-L)。
- * 则声源位置(x，y)可由下式算出
- * 式中2L为正方阵的边长，Δt2，Δt3，Δt4
- * 分别为传感器B, C, D相对于A的时差，c是传播速度
+ *（L，L），（-L，L），（-L，-L），（L，-L）。
+ * 则声源位置（x，y）可由下式算出
+ * （式中2L为正方阵的边长，Δt2，Δt3，Δt4
+ * 分别为传感器2，3，4相对于1的时差，c是传播速度）
  *  x = (C ^ 2 * t2 *(t3 * (t3 - t2) - t4 * (t4 - t2)))
  *      /(4 * L * (t4 - t3 + t2));
  *      
@@ -234,6 +234,3 @@ void main( void )
         }
     }
 }
-
-
-// hello world!
