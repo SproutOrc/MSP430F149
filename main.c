@@ -93,11 +93,11 @@ void getProbeTime(ProbeTime probeTime[], PortStatus portStatus[])
  *     C    |    D
  *          |
  * 
- * ´«¸ÐÆ÷ÕóÁÐ²ÉÓÃÕý·½ÐÎ£¬´«¸ÐÆ÷µÄÎ»ÖÃ×ø±êÎª
- *£¨L£¬L£©£¬£¨-L£¬L£©£¬£¨-L£¬-L£©£¬£¨L£¬-L£©¡£
- * ÔòÉùÔ´Î»ÖÃ£¨x£¬y£©¿ÉÓÉÏÂÊ½Ëã³ö
- * £¨Ê½ÖÐ2LÎªÕý·½ÕóµÄ±ß³¤£¬¦¤t2£¬¦¤t3£¬¦¤t4
- * ·Ö±ðÎª´«¸ÐÆ÷2£¬3£¬4Ïà¶ÔÓÚ1µÄÊ±²î£¬cÊÇ´«²¥ËÙ¶È£©
+ * ä¼ æ„Ÿå™¨é˜µåˆ—é‡‡ç”¨æ­£æ–¹å½¢ï¼Œä¼ æ„Ÿå™¨çš„ä½ç½®åæ ‡ä¸º
+ *ï¼ˆLï¼ŒLï¼‰ï¼Œï¼ˆ-Lï¼ŒLï¼‰ï¼Œï¼ˆ-Lï¼Œ-Lï¼‰ï¼Œï¼ˆLï¼Œ-Lï¼‰ã€‚
+ * åˆ™å£°æºä½ç½®ï¼ˆxï¼Œyï¼‰å¯ç”±ä¸‹å¼ç®—å‡º
+ * ï¼ˆå¼ä¸­2Lä¸ºæ­£æ–¹é˜µçš„è¾¹é•¿ï¼ŒÎ”t2ï¼ŒÎ”t3ï¼ŒÎ”t4
+ * åˆ†åˆ«ä¸ºä¼ æ„Ÿå™¨2ï¼Œ3ï¼Œ4ç›¸å¯¹äºŽ1çš„æ—¶å·®ï¼Œcæ˜¯ä¼ æ’­é€Ÿåº¦ï¼‰
  *  x = (C ^ 2 * t2 *(t3 * (t3 - t2) - t4 * (t4 - t2)))
  *      /(4 * L * (t4 - t3 + t2));
  *      
@@ -143,7 +143,7 @@ void getSoundCoordinate(Point *soundCoordinate, ProbeTime probeTime[])
 }
 
 /**
- * Íâ²¿IO´¥·¢ÖÐ¶Ï³ÌÐò
+ * å¤–éƒ¨IOè§¦å‘ä¸­æ–­ç¨‹åº
  */
 #pragma vector = PORT1_VECTOR
 __interrupt void PORT1_INTERRUPT(void)
@@ -178,7 +178,7 @@ __interrupt void PORT1_INTERRUPT(void)
 }
 
 //***********************************************************************
-//             TIMERAÖÐ¶Ï·þÎñ³ÌÐò£¬ÐèÒªÅÐ¶ÏÖÐ¶ÏÀàÐÍ
+//             TIMERAä¸­æ–­æœåŠ¡ç¨‹åºï¼Œéœ€è¦åˆ¤æ–­ä¸­æ–­ç±»åž‹
 //***********************************************************************
 #pragma vector = TIMERA1_VECTOR
 __interrupt void Timer_A(void)
@@ -196,17 +196,17 @@ __interrupt void Timer_A(void)
 
 void PORT_INIT() 
 {
-    // ÉèÖÃIOÆÕÍ¨Ä£Ê½
+    // è®¾ç½®IOæ™®é€šæ¨¡å¼
     P1SEL = 0x00;
-    // ÉèÖÃIOÎªÊäÈë
+    // è®¾ç½®IOä¸ºè¾“å…¥
     P1DIR &= 0xf0; 
-    // ´ò¿ªIOÖÐ¶Ï
+    // æ‰“å¼€IOä¸­æ–­
     P1IE |= 0x0f;
-    // ÉèÖÃIOÉÏÉýÑØ´¥·¢
+    // è®¾ç½®IOä¸Šå‡æ²¿è§¦å‘
     P1IES &= 0xf0;
-    // ÉèÖÃIOÏÂ½µÑØ´¥·¢
+    // è®¾ç½®IOä¸‹é™æ²¿è§¦å‘
     //P1IES |= 0x0f;
-    // Çå³ýÖÐ¶Ï±êÖ¾Î»
+    // æ¸…é™¤ä¸­æ–­æ ‡å¿—ä½
     P1IFG = 0x00;
 
     P6SEL = 0x00;
@@ -238,3 +238,4 @@ void main( void )
 }
 // set time is 19:51
 // push
+// momoda
