@@ -48,6 +48,7 @@ void timeInit()
     TACTL |= TACLR;
     delay_ms(2);
     TACTL |= TASSEL1 + ID0 + ID1 + TAIE;
+    TACCR0 = 30000;
 }
 
 
@@ -104,7 +105,7 @@ void getProbeTime(ProbeTime probeTime[], PortStatus portStatus[])
  *  y = (C ^ 2 * t4 *(t3 * (t3 - t4) - t2 * (t2 - t4)))
  *      /(4 * L * (t4 - t3 + t2));
 */
-void getSoundCoordinate(Point *soundCoordinate, ProbeTime probeTime[])
+void soundFixedPosition(Point *soundCoordinate, ProbeTime probeTime[])
 {
     int timeA, timeB, timeC, timeD;
     double t2, t3, t4;
@@ -187,8 +188,8 @@ __interrupt void Timer_A(void)
         case 2 : break;
         case 4 : break;
         case 10: 
-            //TIMER_STOP;
-            //MEASURE_STATUS = MEASURE_FREE;
+            TIMER_STOP;
+            MEASURE_STATUS = MEASURE_FREE;
         break;
         default: break;
     }
@@ -216,6 +217,16 @@ void PORT_INIT()
 void main( void )
 {
     // Stop watchdog timer to prevent time out reset
+    
+    ProbeTime probeTime[4] = {
+        {0, 0},
+        {0, 0},
+        {0, 0},
+        {0, 0}
+    };
+
+    Point point;
+
     WDTCTL = WDTPW + WDTHOLD;
     Clock_Init();
     PORT_INIT();
@@ -225,11 +236,10 @@ void main( void )
     MEASURE_STATUS = MEASURE_BUSY;
     while(1) {
         if (MEASURE_STATUS == MEASURE_FREE) {
-            P6OUT = 0xa5;
-            
+            getProbeTime(probeTime, portStatus);
+            soundFixedPosition(point, probeTime);
             index = 0;
         } else {
-            P6OUT = 0x00;
         
         }
     }
