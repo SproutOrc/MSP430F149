@@ -1,4 +1,5 @@
 #include <msp430x14x.h>
+#include "stdio.h"
 #include "config.h"
 #include "lcd1602.h"
 #include "sound.h"
@@ -100,9 +101,6 @@ void PORT_INIT()
     //P1IES |= 0x0f;
     // 清除中断标志位
     P1IFG = 0x00;
-
-    P6SEL = 0x00;
-    P6DIR = 0xff;
 }
 
 void main( void )
@@ -113,6 +111,9 @@ void main( void )
         {0, 0},
         {0, 0}
     };
+    
+    char x[4] = {0, 0, 0, '\0'};
+    char y[4] = {0, 0, 0, '\0'};
 
     Point point;
     
@@ -120,7 +121,13 @@ void main( void )
     WDTCTL = WDTPW + WDTHOLD;
     Clock_Init();
     PORT_INIT();
+    LCD_port_init();
     timeInit();
+    
+    LCD_clear();
+    //                   0123456789ABCDEF
+    LCD_write_str(0, 0, "x =     y =     ");
+    LCD_write_str(0, 1, "x =     y =     ");
     _EINT();
     
     MEASURE_STATUS = MEASURE_BUSY;
@@ -129,6 +136,35 @@ void main( void )
             getProbeTime(probeTime, PortStatusWithArray);
             soundFixedPosition(&point, probeTime);
             index = 0;
+            
+            x[0] = (char)(((int)(point.x) % 1000) / 100 + 0x30);
+            x[1] = (char)(((int)(point.x) % 100) / 10 + 0x30);
+            x[2] = (char)(((int)(point.x) % 10) + 0x30);
+            
+            y[0] = (char)(((int)(point.y) % 1000) / 100 + 0x30);
+            y[1] = (char)(((int)(point.y) % 100) / 10 + 0x30);
+            y[2] = (char)(((int)(point.y) % 10) + 0x30);
+            
+            //                     0123456789ABCDEF
+            //LCD_write_str(4, 0, "x =     y =     ");
+            LCD_write_str(4, 0, x);
+            LCD_write_str(12, 0, y);
+            
+            point.x = 123.0;
+            point.y = 456.0;
+            
+            x[0] = (char)(((int)(point.x) % 1000) / 100 + 0x30);
+            x[1] = (char)(((int)(point.x) % 100) / 10 + 0x30);
+            x[2] = (char)(((int)(point.x) % 10) + 0x30);
+            
+            y[0] = (char)(((int)(point.y) % 1000) / 100 + 0x30);
+            y[1] = (char)(((int)(point.y) % 100) / 10 + 0x30);
+            y[2] = (char)(((int)(point.y) % 10) + 0x30);
+            
+            //                     0123456789ABCDEF
+            //LCD_write_str(4, 0, "x =     y =     ");
+            LCD_write_str(4, 1, x);
+            LCD_write_str(12, 1, y);
         } else {
             
         }

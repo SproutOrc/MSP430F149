@@ -3,7 +3,7 @@
 //*************************************************************************
 //			初始化IO口子程序
 //*************************************************************************
-void LCD_Port_init()
+void LCD_port_init()
 {
 
 	P4SEL = 0x00;
@@ -50,16 +50,16 @@ void LCD_clear(void)
 //***********************************************************************
 //	显示屏字符串写入函数
 //***********************************************************************
-void LCD_write_str(unsigned char x,unsigned char y,unsigned char *s) 
+void LCD_write_str(unsigned char star,unsigned char line,char *s) 
 {
 	
-    if (y == 0) 
+    if (line == 0) 
     {
-    	LCD_write_com(0x80 + x);        //第一行显示
+    	LCD_write_com(0x80 + star);        //第一行显示
     }
     else 
     {
-    	LCD_write_com(0xC0 + x);        //第二行显示
+    	LCD_write_com(0xC0 + star);        //第二行显示
     }
     
     while (*s) 
@@ -72,16 +72,16 @@ void LCD_write_str(unsigned char x,unsigned char y,unsigned char *s)
 //***********************************************************************
 //	显示屏单字符写入函数
 //***********************************************************************
-void LCD_write_char(unsigned char x,unsigned char y,unsigned char data) 
+void LCD_write_char(unsigned char star,unsigned char line,char data) 
 {
 	
-    if (y == 0) 
+    if (line == 0) 
     {
-    	LCD_write_com(0x80 + x);        //第一行显示
+    	LCD_write_com(0x80 + star);        //第一行显示
     }
     else 
     {
-    	LCD_write_com(0xC0 + x);        //第二行显示
+    	LCD_write_com(0xC0 + star);        //第二行显示
     }
     
     LCD_write_data( data);  
