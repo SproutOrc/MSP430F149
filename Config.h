@@ -9,6 +9,8 @@
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
+#include <msp430x14x.h>
+
 //延时函数，IAR自带，经常使用到
 #define CPU_F ((double)8000000)   //外部高频晶振8MHZ
 //#define CPU_F ((double)32768)   //外部低频晶振32.768KHZ
@@ -156,56 +158,21 @@
 //***********************************************************************
 //                   系统时钟初始化，外部8M晶振
 //***********************************************************************
-void Clock_Init()
-{
-  uchar i;
-  BCSCTL1&=~XT2OFF;                 //打开XT2振荡器
-  BCSCTL2|=SELM1+SELS;              //MCLK为8MHZ，SMCLK为8MHZ
-  do{
-    IFG1&=~OFIFG;                   //清楚振荡器错误标志
-    for(i=0;i<100;i++)
-       _NOP();
-  }
-  while((IFG1&OFIFG)!=0);           //如果标志位1，则继续循环等待
-  IFG1&=~OFIFG; 
-}
+void Clock_Init();
 
 //***********************************************************************
 //                   系统时钟初始化，内部RC晶振
 //***********************************************************************
-void Clock_Init_Inc()
-{  
- // DCOCTL = DCO0 + DCO1 + DCO2;              // Max DCO
- // BCSCTL1 = RSEL0 + RSEL1 + RSEL2;          // XT2on, max RSEL
-  
-  DCOCTL = 0x60 + 0x00;                       //DCO约3MHZ，3030KHZ
-  BCSCTL1 = DIVA_0 + 0x07;
-  BCSCTL2 = SELM_2 + DIVM_0 + SELS + DIVS_0;
-}
+void Clock_Init_Inc();
 
 //***********************************************************************
 //                   系统时钟初始化，外部32.768K晶振
 //***********************************************************************
-void Clock_Init_Ex32768()
-{
-  uchar i;
-
-  BCSCTL2|=SELM1 + SELM0 + SELS;    //MCLK为32.768KHZ，SMCLK为8MHZ
-  do{
-    IFG1&=~OFIFG;                   //清楚振荡器错误标志
-    for(i=0;i<100;i++)
-       _NOP();
-  }
-  while((IFG1&OFIFG)!=0);           //如果标志位1，则继续循环等待
-  IFG1&=~OFIFG; 
-}
+void Clock_Init_Ex32768();
 
 //***********************************************************************
 //               MSP430内部看门狗初始化
 //***********************************************************************
-void WDT_Init()
-{
-   WDTCTL = WDTPW + WDTHOLD;       //关闭看门狗
-}
+void WDT_Init();
 
 #endif

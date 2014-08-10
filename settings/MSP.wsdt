@@ -16,40 +16,84 @@
           <Column3>27</Column3>
         </ColumnWidths>
       </Workspace>
+      <Build>
+        <ColumnWidth0>20</ColumnWidth0>
+        <ColumnWidth1>1155</ColumnWidth1>
+        <ColumnWidth2>308</ColumnWidth2>
+        <ColumnWidth3>77</ColumnWidth3>
+      </Build>
     </Static>
     <Windows>
       <Wnd1>
         <Tabs>
           <Tab>
-            <Identity>TabID-18951-21058</Identity>
+            <Identity>TabID-25773-20708</Identity>
             <TabName>Workspace</TabName>
             <Factory>Workspace</Factory>
             <Session>
               <NodeDict>
                 <ExpandedNode>KEY_INTERRUPT</ExpandedNode>
-                <ExpandedNode>KEY_INTERRUPT/Output</ExpandedNode>
               </NodeDict>
             </Session>
           </Tab>
         </Tabs>
         <SelectedTab>0</SelectedTab>
       </Wnd1>
+      <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-18347-1534</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        </Tabs>
+        <SelectedTab>0</SelectedTab>
+      </Wnd0>
     </Windows>
     <Editor>
       <Pane>
         <Tab>
           <Factory>TextEditor</Factory>
-          <Filename>$WS_DIR$\..\..\Soft\IAR Systems\Embedded Workbench 6.0 Evaluation\430\doc\infocenter\index.ENU.html</Filename>
+          <Filename>$WS_DIR$\lcd1602.c</Filename>
+          <XPos>0</XPos>
+          <YPos>15</YPos>
+          <SelStart>567</SelStart>
+          <SelEnd>567</SelEnd>
         </Tab>
         <Tab>
           <Factory>TextEditor</Factory>
           <Filename>$WS_DIR$\main.c</Filename>
           <XPos>0</XPos>
-          <YPos>69</YPos>
-          <SelStart>1686</SelStart>
-          <SelEnd>1686</SelEnd>
+          <YPos>15</YPos>
+          <SelStart>99</SelStart>
+          <SelEnd>99</SelEnd>
         </Tab>
-        <ActiveTab>1</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\sound.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>51</SelStart>
+          <SelEnd>51</SelEnd>
+        </Tab>
+        <ActiveTab>2</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\sound.c</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>34</SelStart>
+          <SelEnd>34</SelEnd>
+        </Tab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\sys.h</Filename>
+          <XPos>0</XPos>
+          <YPos>0</YPos>
+          <SelStart>112</SelStart>
+          <SelEnd>112</SelEnd>
+        </Tab>
       </Pane>
       <ActivePane>0</ActivePane>
       <Sizes>
@@ -64,9 +108,9 @@
       <Top>
         <Row0>
           <Sizes>
-            <Toolbar-0237e788>
+            <Toolbar-02c3e788>
               <key>iaridepm.enu1</key>
-            </Toolbar-0237e788>
+            </Toolbar-02c3e788>
           </Sizes>
         </Row0>
       </Top>
@@ -77,7 +121,7 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>782</Bottom>
+                <Bottom>584</Bottom>
                 <Right>198</Right>
                 <x>-2</x>
                 <y>-2</y>
@@ -86,7 +130,7 @@
                 <sizeHorzCX>125000</sizeHorzCX>
                 <sizeHorzCY>241838</sizeHorzCY>
                 <sizeVertCX>125000</sizeVertCX>
-                <sizeVertCY>948005</sizeVertCY>
+                <sizeVertCY>708585</sizeVertCY>
               </Rect>
             </Wnd1>
           </Sizes>
@@ -99,7 +143,24 @@
       </Right>
       <Bottom>
         <Row0>
-          <Sizes/>
+          <Sizes>
+            <Wnd0>
+              <Rect>
+                <Top>-2</Top>
+                <Left>-2</Left>
+                <Bottom>198</Bottom>
+                <Right>1602</Right>
+                <x>-2</x>
+                <y>-2</y>
+                <xscreen>1604</xscreen>
+                <yscreen>200</yscreen>
+                <sizeHorzCX>1002500</sizeHorzCX>
+                <sizeHorzCY>241838</sizeHorzCY>
+                <sizeVertCX>125000</sizeVertCX>
+                <sizeVertCY>241838</sizeVertCY>
+              </Rect>
+            </Wnd0>
+          </Sizes>
         </Row0>
       </Bottom>
       <Float>

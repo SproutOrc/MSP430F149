@@ -1869,7 +1869,16 @@
     </settings>
   </configuration>
   <file>
+    <name>$PROJ_DIR$\config.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\lcd1602.c</name>
+  </file>
+  <file>
     <name>$PROJ_DIR$\main.c</name>
+  </file>
+  <file>
+    <name>$PROJ_DIR$\sound.c</name>
   </file>
 </project>
 
