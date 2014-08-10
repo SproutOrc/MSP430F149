@@ -1,5 +1,4 @@
 #include <msp430x14x.h>
-#include "stdio.h"
 #include "config.h"
 #include "lcd1602.h"
 #include "sound.h"
@@ -45,13 +44,11 @@ __interrupt void PORT1_INTERRUPT(void)
     while (P1IFG != portValue) {
         portValue = P1IFG;
         if (index == 0) {
+            TIMER_RUN;
             MEASURE_STATUS = MEASURE_BUSY;
             TAR = 0x0000;
             PortStatusWithArray[index].portValue = portValue;
             PortStatusWithArray[index].timeValue = 0x0000;
-
-            TIMER_RUN;
-
         } else if (index >= 4) {
             break;
         } else {
@@ -96,11 +93,14 @@ void PORT_INIT()
     // 打开IO中断
     P1IE |= 0x0f;
     // 设置IO上升沿触发
-    P1IES &= 0xf0;
+    //P1IES &= 0xf0;
     // 设置IO下降沿触发
-    //P1IES |= 0x0f;
+    P1IES |= 0x0f;
     // 清除中断标志位
     P1IFG = 0x00;
+    
+    P6SEL = 0x00;
+    P6DIR = 0xff;
 }
 
 void main( void )
@@ -122,8 +122,8 @@ void main( void )
     Clock_Init();
     PORT_INIT();
     LCD_port_init();
+    LCD_init();
     timeInit();
-    
     LCD_clear();
     //                   0123456789ABCDEF
     LCD_write_str(0, 0, "x =     y =     ");
@@ -165,8 +165,10 @@ void main( void )
             //LCD_write_str(4, 0, "x =     y =     ");
             LCD_write_str(4, 1, x);
             LCD_write_str(12, 1, y);
-        } else {
             
+            P6OUT = 0xa5;
+        } else {
+            P6OUT = 0xff;
         }
     }
 }

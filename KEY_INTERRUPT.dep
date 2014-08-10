@@ -68,11 +68,11 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 0 8 1 35 28 29 30 33 36 34 31 32 11 23 24 16</file>
+          <file> 0 8 1 11 23 24 16</file>
         </tool>
         <tool>
           <name>ICC430</name>
-          <file> 0 8 1 35 28 29 30 26 33 36 34 31 32 11 23 24 16</file>
+          <file> 0 8 1 11 23 24 16</file>
         </tool>
       </inputs>
     </file>
