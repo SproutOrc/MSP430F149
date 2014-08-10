@@ -80,6 +80,12 @@ void soundFixedPosition(Point *soundCoordinate, ProbeTime probeTime[])
             break;
         }
     }
+     // debug
+    // timeA = 0;
+    // timeB = 3747;
+    // timeC = 8202;
+    // timeD = 5097;
+    // relase   
     t2 = (timeB - timeA) * 0.000001;
     t3 = (timeC - timeA) * 0.000001;
     t4 = (timeD - timeA) * 0.000001;

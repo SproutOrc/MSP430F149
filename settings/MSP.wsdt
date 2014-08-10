@@ -58,11 +58,19 @@
           <Factory>TextEditor</Factory>
           <Filename>$WS_DIR$\main.c</Filename>
           <XPos>0</XPos>
-          <YPos>113</YPos>
-          <SelStart>2484</SelStart>
-          <SelEnd>2484</SelEnd>
+          <YPos>51</YPos>
+          <SelStart>593</SelStart>
+          <SelEnd>593</SelEnd>
         </Tab>
-        <ActiveTab>0</ActiveTab>
+        <Tab>
+          <Factory>TextEditor</Factory>
+          <Filename>$WS_DIR$\sound.c</Filename>
+          <XPos>0</XPos>
+          <YPos>63</YPos>
+          <SelStart>2018</SelStart>
+          <SelEnd>2018</SelEnd>
+        </Tab>
+        <ActiveTab>1</ActiveTab>
       </Pane>
       <ActivePane>0</ActivePane>
       <Pane>
@@ -113,7 +121,7 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>584</Bottom>
+                <Bottom>598</Bottom>
                 <Right>198</Right>
                 <x>-2</x>
                 <y>-2</y>
@@ -122,7 +130,7 @@
                 <sizeHorzCX>125000</sizeHorzCX>
                 <sizeHorzCY>241838</sizeHorzCY>
                 <sizeVertCX>125000</sizeVertCX>
-                <sizeVertCY>708585</sizeVertCY>
+                <sizeVertCY>725514</sizeVertCY>
               </Rect>
             </Wnd0>
           </Sizes>
@@ -140,14 +148,14 @@
               <Rect>
                 <Top>-2</Top>
                 <Left>-2</Left>
-                <Bottom>198</Bottom>
+                <Bottom>184</Bottom>
                 <Right>1602</Right>
                 <x>-2</x>
                 <y>-2</y>
                 <xscreen>1604</xscreen>
-                <yscreen>200</yscreen>
+                <yscreen>186</yscreen>
                 <sizeHorzCX>1002500</sizeHorzCX>
-                <sizeHorzCY>241838</sizeHorzCY>
+                <sizeHorzCY>224909</sizeHorzCY>
                 <sizeVertCX>125000</sizeVertCX>
                 <sizeVertCY>241838</sizeVertCY>
               </Rect>
